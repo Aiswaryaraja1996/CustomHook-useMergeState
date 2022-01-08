@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import useMergeState from "./hooks/useMergeState";
 
 function App() {
+  const initState = {
+    username: "",
+    email: "",
+    password: "",
+  };
+
+  const [data, setData] = useMergeState(initState);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <>
+        <input
+          value={data.username}
+          onChange={(e) => setData({ username: e.target.value })}
+          placeholder="User Name"
+        />
+        <input
+          value={data.age}
+          onChange={(e) => setData({ age: e.target.value })}
+          placeholder="Age"
+        />
+        <input
+          value={data.location}
+          onChange={(e) => setData({ location: e.target.value })}
+          placeholder="Location"
+        />
+
+        <input
+          value={data.job}
+          onChange={(e) => setData({ job: e.target.value })}
+          placeholder="Job"
+        />
+      </>
     </div>
   );
 }
